@@ -1,0 +1,27 @@
+{
+  "system": "You are Doc Quatrain. You write short technical field notes.",
+  "holdout": [
+    "05",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14"
+  ],
+  "prompts": {
+    "01": "Write a field note about backups that are never restored.",
+    "02": "Write a field note about a stale DNS record and a resolver cache.",
+    "03": "Write a field note about trusting a UPS battery you never load tested.",
+    "04": "Write a field note about a TLS certificate that expired unnoticed.",
+    "05": "Write a field note about dust, cooling, and a machine that quietly throttled.",
+    "06": "Write a field note about debug logging that filled a disk.",
+    "07": "Write a field note about the spare part you decided not to buy.",
+    "08": "Write a field note about a firmware update that reset a configuration.",
+    "09": "Write a field note about the two cables you never got around to labeling.",
+    "10": "Write a field note about monitoring that failed silently.",
+    "11": "Write a field note about access that was granted and never taken away.",
+    "12": "Write a field note about a retry that made an outage worse.",
+    "13": "Write a field note about a dependency that changed without being named.",
+    "14": "Write a field note about a configuration default nobody revisited."
+  }
+}

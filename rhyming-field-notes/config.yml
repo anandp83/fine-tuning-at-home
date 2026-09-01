@@ -1,0 +1,35 @@
+# Axolotl configuration for this training.
+# For a smaller model, change base_model and nothing else.
+base_model: Qwen/Qwen3-8B
+load_in_4bit: true              # QLoRA: frozen base at 4 bits
+adapter: qlora
+bf16: true
+
+datasets:
+  - path: rhyming-field-notes/data/train.jsonl
+    type: chat_template          # use the tokenizer's own template
+    field_messages: messages
+val_set_size: 0                  # the holdout is judged by hand, not scored
+sequence_len: 1024               # > the longest example, measured above
+sample_packing: false
+train_on_inputs: false           # loss on the response only
+
+lora_r: 16                       # MATTERS: adapter capacity
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_linear: true
+
+num_epochs: 15                   # MATTERS: passes over 8 examples
+learning_rate: 0.0001            # MATTERS: step size
+lr_scheduler: cosine
+warmup_ratio: 0.1
+micro_batch_size: 1
+gradient_accumulation_steps: 4
+
+optimizer: adamw_bnb_8bit        # 8-bit moments, less memory
+gradient_checkpointing: true     # recompute instead of storing
+flash_attention: true            # drop this if flash-attn would not build
+
+output_dir: rhyming-field-notes/out/adapter
+save_strategy: epoch             # MATTERS: keep every pass to compare
+logging_steps: 1

@@ -1,0 +1,18 @@
+# Fine-tuning a small open model on one GPU. NVIDIA only: the stack is CUDA.
+#
+#   python3 -m venv .venv && source .venv/bin/activate
+#   pip install -r requirements.txt
+#
+# Deliberately unpinned. These move fast enough that a pinned version goes stale within
+# months, and a real incompatibility is better diagnosed from the traceback than worked
+# around by someone else's snapshot of a working afternoon.
+#
+# Install torch first if pip resolves a build without CUDA for your setup:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu124
+torch
+transformers
+datasets
+accelerate
+peft
+trl
+bitsandbytes
